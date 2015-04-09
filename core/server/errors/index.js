@@ -284,15 +284,17 @@ errors = {
     },
 
     error404: function (req, res, next) {
-        var message = res.isAdmin && req.user ? 'No Ghost Found' : 'Page Not Found';
-
-        // do not cache 404 error
-        res.set({'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'});
-        if (req.method === 'GET') {
-            this.renderErrorPage(404, message, req, res, next);
-        } else {
-            res.status(404).send(message);
-        }
+        next();
+        
+//        var message = res.isAdmin && req.user ? 'No Ghost Found' : 'Page Not Found';
+//
+//        // do not cache 404 error
+//        res.set({'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'});
+//        if (req.method === 'GET') {
+//            this.renderErrorPage(404, message, req, res, next);
+//        } else {
+//            res.status(404).send(message);
+//        }
     },
 
     error500: function (err, req, res, next) {
