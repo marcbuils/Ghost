@@ -130,7 +130,7 @@ function initNotifications() {
 // Finally it returns an instance of GhostServer
 function init(options) {
     // Get reference to an express app instance.
-    var blogApp = express(),
+    var blogApp = options.blogApp || express(),
         adminApp = express();
 
     // ### Initialisation
