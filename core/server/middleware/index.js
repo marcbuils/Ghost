@@ -266,6 +266,12 @@ setupMiddleware = function (blogAppInstance, adminApp) {
     // site map
     sitemapHandler(blogApp);
 
+    // Add in all trailing slashes
+    blogApp.use(slashes(true, {
+        headers: {
+            'Cache-Control': 'public, max-age=' + utils.ONE_YEAR_S
+        }
+    }));
     blogApp.use(uncapitalise);
 
     // Body parsing
